@@ -1,0 +1,26 @@
+package com.myspace.finanmovilsa.rules;
+
+import com.myspace.finanmovilsa.model.bo.Persona;
+import com.myspace.finanmovilsa.model.bo.Validaciones;
+
+rule "Validar aprobacion"
+no-loop
+ruleflow-group "Cambiar Nombre"
+
+    
+    
+    when
+        $v: Validaciones(codigo == "CA")
+        $p: Persona(this != null)
+    
+    then 
+
+        modify($p){
+            setPrimerNombre("DENEGADO"),
+            setSegundoNombre("DENEGADO"),
+            setPrimerApellido("DENEGADO"),
+            setSegundoApellido("DENEGADO")
+            
+        }end
+        
+        
